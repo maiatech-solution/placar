@@ -20,6 +20,9 @@ body {
     color: white;
     margin: auto; /* Centraliza a container */
     flex-grow: 1; /* Permite que a container cresça para ocupar o espaço disponível */
+    display: flex; 
+    flex-direction: column; /* Mantenha os itens na coluna */
+    justify-content: center; /* Centraliza verticalmente */
 }
 
 h1 {
@@ -67,7 +70,9 @@ button:hover {
 
 .score-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Na vertical por padrão */
+    justify-content: center;
+    align-items: center; /* Centraliza os cards */
     margin: 20px 0;
     flex-wrap: wrap; /* Permite que os cards se ajustem */
 }
@@ -79,7 +84,7 @@ button:hover {
     flex: 1;
     min-width: 200px; /* Largura mínima dos cards */
     text-align: center;
-    margin: 0 5px; /* Espaçamento entre os cards */
+    margin: 10px 0; /* Espaçamento entre os cards */
 }
 
 .team-cardB {
@@ -112,6 +117,10 @@ h3 {
     margin-top: 20px; /* Espaço acima dos botões */
 }
 
+button#restart, button#new-game {
+    width: 48%; /* Cada botão ocupa 48% do espaço */
+}
+
 footer {
     background-color: #333; /* Cinza escuro */
     color: white;
@@ -124,4 +133,20 @@ footer {
 footer p {
     margin: 0; /* Remove margens padrão */
     font-size: 0.9em; /* Tamanho da fonte */
+}
+
+/* Estilos para quando a tela está na horizontal */
+@media (orientation: landscape) {
+    .score-container {
+        flex-direction: row; /* Muda para horizontal */
+    }
+    
+    .team-cardA, .team-cardB {
+        margin: 0 10px; /* Espaçamento horizontal entre os cards */
+    }
+    
+    .button-container {
+        justify-content: center; /* Centraliza os botões na horizontal */
+        margin-top: 20px; /* Espaço acima dos botões */
+    }
 }
