@@ -11,6 +11,11 @@ body {
     box-sizing: border-box;
 }
 
+.container{
+    display: flex;
+    width: 100%;
+}
+
 .container, .score-container {
     background: #252525; /* Cinza escuro */
     border-radius: 12px;
@@ -18,7 +23,7 @@ body {
     padding: 30px;
     width: 100%;
     max-width: 600px; /* Aumenta a largura máxima */
-    color: white;
+    color: rgb(212, 212, 212);
     flex-direction: column;
     border: 2px solid #ffffff1e; /* Verde claro */
 }
@@ -32,29 +37,29 @@ body {
 }
 
 h1 {
-    color: #76c7c0; /* Verde claro */
+    color: #ffffff; /* Verde claro */
     margin-bottom: 20px;
     font-size: 2em;
     text-align: center;
 }
 
+
 input[type="number"], input[type="text"] {
     padding: 10px;
-    width: 100%; /* Largura total */
     margin-bottom: 20px;
     border: 2px solid #ffffff9f; /* Verde claro */
     border-radius: 6px;
     font-size: 1em;
     background: #333; /* Fundo escuro para input */
-    color: white;
 }
+
 
 button {
     background-color: #42b6ac; /* Verde claro padrão */
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 12px;
+    padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
     width: 100%;
