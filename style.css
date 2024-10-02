@@ -149,8 +149,8 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    width: 100%;
-    position: absolute; /* Posiciona o footer na parte inferior */
+    width: 100%; /* Largura total */
+    position: fixed; /* Posiciona o footer na parte inferior */
     bottom: 0; /* Coloca o footer na parte inferior da janela */
 }
 
@@ -158,6 +158,7 @@ footer p {
     margin: 0; /* Remove margens padrão */
     font-size: 0.9em; /* Tamanho da fonte */
 }
+
 
 /* Estilo para os botões Reiniciar e Novo Jogo */
 button#restart,
