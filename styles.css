@@ -17,7 +17,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
     padding: 40px; /* Mais espaçamento interno */
-    width: 100%;
+    width: 100%; /* Largura total */
     max-width: 450px; /* Largura máxima */
     color: white;
     flex: 1; /* Faz a container crescer para ocupar espaço */
@@ -135,7 +135,8 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    width: 100%;
+    width: 100%; /* Garantir que o footer ocupe toda a largura */
+    position: relative; /* Manter o footer na parte inferior */
 }
 
 footer p {
