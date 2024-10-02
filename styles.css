@@ -1,0 +1,146 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Fundo escuro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background: #252525; /* Cinza escuro */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+    padding: 40px; /* Mais espaçamento interno */
+    width: 100%;
+    max-width: 450px;
+    color: white;
+}
+
+h1 {
+    color: #76c7c0; /* Verde claro */
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Tamanho maior */
+    text-align: center;
+}
+
+.screen {
+    margin-bottom: 30px;
+}
+
+input[type="number"], input[type="text"] {
+    padding: 12px; /* Aumentar padding */
+    width: 100%; /* Largura total */
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 1em;
+    background: #333; /* Fundo escuro para input */
+    color: white;
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura */
+    transition: border-color 0.3s; /* Transição suave na borda */
+}
+
+input[type="number"] {
+    border: 2px solid #76c7c0; /* Cor do fundo do card do Time A */
+}
+
+input[type="text"] {
+    border: 2px solid #256b50; /* Cor do card do Time A */
+}
+
+input[type="text"]#team-b-name {
+    border: 2px solid #97521a; /* Cor do card do Time B */
+}
+
+button {
+    background-color: #42b6ac; /* Verde claro */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
+    font-size: 1.2em; /* Tamanho maior */
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #4db6b2; /* Verde mais escuro */
+    transform: translateY(-2px);
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.team-cardA {
+    background: #256b50; /* Verde escuro */
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.team-cardB {
+    background: #97521a; /* Laranja escuro */
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin: 0;
+    color: #f1c40f; /* Dourado */
+    font-size: 1.5em;
+}
+
+h3 {
+    margin: 10px 0;
+    font-size: 3em;
+    color: #ffffff; /* Branco */
+}
+
+#winner-message {
+    font-size: 1.5em;
+    color: #f1c40f; /* Dourado */
+    margin-top: 20px;
+    display: none;
+    text-align: center;
+}
+
+footer {
+    background-color: #333; /* Cinza escuro */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: absolute; /* Posiciona o footer na parte inferior */
+    bottom: 0; /* Coloca o footer na parte inferior da janela */
+    left: 0; /* Alinha à esquerda */
+    margin-top: 20px; /* Espaço acima do footer */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+    margin: 0; /* Remove margens padrão */
+    font-size: 0.9em; /* Tamanho da fonte */
+}
+
+/* Estilo adicional para os botões + e - */
+button#btn-a-increase,
+button#btn-a-decrease,
+button#btn-b-increase,
+button#btn-b-decrease {
+    margin-top: 10px; /* Espaço entre os botões */
+}
