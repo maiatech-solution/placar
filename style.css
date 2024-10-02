@@ -57,18 +57,19 @@ button:hover {
     transform: translateY(-2px);
 }
 
-.scoreboard {
+.score-container {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    width: 100%; /* Garante que ocupe toda a largura */
     flex-wrap: wrap; /* Permite que os cards se ajustem */
+    margin-bottom: 20px; /* Espaço abaixo do score-container */
 }
 
 .team-cardA, .team-cardB {
     background: #256b50; /* Verde escuro para Time A */
     border-radius: 10px;
     padding: 20px;
-    flex: 1 1 48%; /* Ajusta a largura dos cards */
+    flex: 1 1 45%; /* Ajusta a largura dos cards */
     text-align: center;
     margin: 10px; /* Adiciona espaço entre os cards */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -113,13 +114,7 @@ footer p {
     font-size: 0.9em; /* Tamanho da fonte */
 }
 
-/* Estilo específico para a seção de placar */
-.score-container {
-    display: flex;
-    flex-direction: column; /* Coloca os itens em coluna */
-    align-items: center; /* Centraliza os itens */
-}
-
+/* Estilo para os botões Reiniciar e Novo Jogo */
 button#restart,
 button#new-game {
     width: 48%; /* Ajusta a largura dos botões */
