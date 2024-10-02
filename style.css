@@ -112,3 +112,16 @@ footer p {
     margin: 0; /* Remove margens padrão */
     font-size: 0.9em; /* Tamanho da fonte */
 }
+
+/* Estilo específico para a seção de placar */
+.score-container {
+    display: flex;
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center; /* Centraliza os itens */
+}
+
+button#restart,
+button#new-game {
+    width: 48%; /* Ajusta a largura dos botões */
+    margin: 10px 1%; /* Adiciona margem entre os botões */
+}
