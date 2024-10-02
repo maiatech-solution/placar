@@ -12,9 +12,9 @@ document.getElementById("start-game").addEventListener("click", function() {
     document.getElementById("team-a-display").innerText = teamAName;
     document.getElementById("team-b-display").innerText = teamBName;
 
-    // Oculta a tela inicial e mostra a tela de placar
-    document.querySelector(".score-container").style.display = "flex";
-    document.querySelector(".score-container").style.flexDirection = "column"; // Inicia em coluna
+    // Oculta a tela inicial
+    document.querySelector(".container").style.display = "none"; // Esconde a tela inicial
+    document.querySelector(".score-container").style.display = "flex"; // Mostra a tela de placar
 
     // Reseta os pontos
     document.getElementById("team-a-score").innerText = "0";
@@ -44,7 +44,8 @@ document.getElementById("start-game").addEventListener("click", function() {
     });
 
     document.getElementById("new-game").addEventListener("click", function() {
-        document.querySelector(".score-container").style.display = "none";
+        document.querySelector(".score-container").style.display = "none"; // Esconde a tela de placar
+        document.querySelector(".container").style.display = "block"; // Mostra a tela inicial novamente
         document.getElementById("max-points").value = "";
         document.getElementById("team-a-name").value = "";
         document.getElementById("team-b-name").value = "";
