@@ -2,10 +2,10 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a; /* Fundo escuro */
     margin: 0;
-    padding: 20px;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between; /* Garante que o footer fique no final */
     height: 100vh;
     box-sizing: border-box;
 }
@@ -17,6 +17,7 @@ body {
     padding: 30px;
     width: 100%;
     max-width: 450px;
+    margin: 20px auto; /* Centraliza o container */
     color: white;
 }
 
@@ -27,20 +28,23 @@ h1 {
     text-align: center;
 }
 
-.screen {
-    margin-bottom: 30px;
-}
-
 input[type="number"], input[type="text"] {
     padding: 10px;
     width: 100%; /* Largura total */
     margin-bottom: 20px;
-    border: 2px solid #256b50; /* Cor do card A */
     border-radius: 6px;
     font-size: 1em;
     background: #333; /* Fundo escuro para input */
     color: white;
     box-sizing: border-box; /* Garante que padding e border não aumentem a largura */
+}
+
+#team-a-name {
+    border: 2px solid #256b50; /* Cor do card A */
+}
+
+#team-b-name {
+    border: 2px solid #97521a; /* Cor do card B */
 }
 
 button {
@@ -67,8 +71,7 @@ button:hover {
     margin: 20px 0;
 }
 
-.team-cardA {
-    background: #256b50; /* Verde escuro */
+.team-cardA, .team-cardB {
     border-radius: 10px;
     padding: 20px;
     flex: 1;
@@ -77,14 +80,12 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.team-cardA {
+    background: #256b50; /* Verde escuro */
+}
+
 .team-cardB {
     background: #97521a; /* Laranja escuro */
-    border-radius: 10px;
-    padding: 20px;
-    flex: 1;
-    text-align: center;
-    margin: 0 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
@@ -116,7 +117,6 @@ h3 {
 .button-container button {
     flex: 1; /* Faz os botões ocuparem o mesmo espaço */
     margin: 0 5px; /* Espaçamento entre os botões */
-    min-width: 150px; /* Largura mínima para os botões */
 }
 
 footer {
@@ -125,10 +125,6 @@ footer {
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    position: absolute; /* Posiciona o footer na parte inferior */
-    bottom: 0; /* Coloca o footer na parte inferior da janela */
-    left: 0; /* Alinha à esquerda */
-    margin-top: 20px; /* Espaço acima do footer */
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
 }
 
