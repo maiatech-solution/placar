@@ -1,74 +1,70 @@
 document.getElementById("start-game").addEventListener("click", function() {
+    const maxPoints = document.getElementById("max-points").value;
     const teamAName = document.getElementById("team-a-name").value;
     const teamBName = document.getElementById("team-b-name").value;
-    const maxScore = parseInt(document.getElementById("max-score").value);
 
-    if (teamAName && teamBName && !isNaN(maxScore)) {
-        document.getElementById("team-a-display").innerText = teamAName;
-        document.getElementById("team-b-display").innerText = teamBName;
+    if (!maxPoints || !teamAName || !teamBName) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
 
-        document.getElementById("initial-screen").style.display = "none";
-        document.getElementById("scoreboard").style.display = "block";
+    // Atualiza os nomes dos times
+    document.getElementById("team-a-display").innerText = teamAName;
+    document.getElementById("team-b-display").innerText = teamBName;
 
-        // Reset scores
-        document.getElementById("team-a-score").innerText = 0;
-        document.getElementById("team-b-score").innerText = 0;
+    // Oculta a tela inicial e mostra a tela de placar
+    document.querySelector(".score-container").style.display = "flex";
+    document.querySelector(".score-container").style.flexDirection = "column"; // Inicia em coluna
 
-        document.getElementById("winner-message").style.display = "none";
+    // Reseta os pontos
+    document.getElementById("team-a-score").innerText = "0";
+    document.getElementById("team-b-score").innerText = "0";
+
+    // Adiciona evento para aumentar e diminuir pontos
+    document.getElementById("increase-a").addEventListener("click", function() {
+        updateScore('a', maxPoints);
+    });
+
+    document.getElementById("decrease-a").addEventListener("click", function() {
+        updateScore('a', maxPoints, false);
+    });
+
+    document.getElementById("increase-b").addEventListener("click", function() {
+        updateScore('b', maxPoints);
+    });
+
+    document.getElementById("decrease-b").addEventListener("click", function() {
+        updateScore('b', maxPoints, false);
+    });
+
+    document.getElementById("restart").addEventListener("click", function() {
+        document.getElementById("team-a-score").innerText = "0";
+        document.getElementById("team-b-score").innerText = "0";
+        document.getElementById("winner-message").innerText = "";
+    });
+
+    document.getElementById("new-game").addEventListener("click", function() {
+        document.querySelector(".score-container").style.display = "none";
+        document.getElementById("max-points").value = "";
+        document.getElementById("team-a-name").value = "";
+        document.getElementById("team-b-name").value = "";
+        document.getElementById("winner-message").innerText = "";
+    });
+});
+
+function updateScore(team, maxPoints, isIncrease = true) {
+    const scoreElement = document.getElementById(`team-${team}-score`);
+    let score = parseInt(scoreElement.innerText);
+
+    if (isIncrease) {
+        score++;
     } else {
-        alert("Por favor, preencha todos os campos corretamente.");
+        score = Math.max(0, score - 1); // Não permitir pontuação negativa
     }
-});
 
-let teamAScore = 0;
-let teamBScore = 0;
-const maxScore = parseInt(document.getElementById("max-score").value);
+    scoreElement.innerText = score;
 
-document.getElementById("btn-a-increase").addEventListener("click", function() {
-    teamAScore++;
-    updateScore();
-});
-
-document.getElementById("btn-a-decrease").addEventListener("click", function() {
-    if (teamAScore > 0) {
-        teamAScore--;
-        updateScore();
-    }
-});
-
-document.getElementById("btn-b-increase").addEventListener("click", function() {
-    teamBScore++;
-    updateScore();
-});
-
-document.getElementById("btn-b-decrease").addEventListener("click", function() {
-    if (teamBScore > 0) {
-        teamBScore--;
-        updateScore();
-    }
-});
-
-function updateScore() {
-    document.getElementById("team-a-score").innerText = teamAScore;
-    document.getElementById("team-b-score").innerText = teamBScore;
-
-    if (teamAScore >= maxScore) {
-        document.getElementById("winner-message").innerText = `${document.getElementById("team-a-display").innerText} venceu!`;
-        document.getElementById("winner-message").style.display = "block";
-    } else if (teamBScore >= maxScore) {
-        document.getElementById("winner-message").innerText = `${document.getElementById("team-b-display").innerText} venceu!`;
-        document.getElementById("winner-message").style.display = "block";
+    if (score >= maxPoints) {
+        document.getElementById("winner-message").innerText = `Parabéns, ${document.getElementById(`team-${team}-display`).innerText} venceu!`;
     }
 }
-
-document.getElementById("restart").addEventListener("click", function() {
-    teamAScore = 0;
-    teamBScore = 0;
-    updateScore();
-    document.getElementById("winner-message").style.display = "none";
-});
-
-document.getElementById("new-game").addEventListener("click", function() {
-    document.getElementById("initial-screen").style.display = "block";
-    document.getElementById("scoreboard").style.display = "none";
-});
