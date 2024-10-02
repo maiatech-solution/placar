@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-direction: column; /* Coloca o conteúdo em coluna */
     justify-content: space-between; /* Espaça o conteúdo */
+    align-items: center; /* Centraliza horizontalmente */
 }
 
 .container {
@@ -17,11 +18,13 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
     padding: 40px; /* Mais espaçamento interno */
     width: 100%;
-    max-width: 450px;
+    max-width: 450px; /* Largura máxima */
     color: white;
     flex: 1; /* Faz a container crescer para ocupar espaço */
     overflow-y: auto; /* Permite rolagem se necessário */
-    padding-top: 60px; /* Adiciona espaço no topo */
+    display: flex; /* Usar flexbox para centralizar conteúdo interno */
+    flex-direction: column; /* Colocar conteúdo em coluna */
+    align-items: center; /* Centraliza o conteúdo dentro da container */
 }
 
 h1 {
@@ -33,6 +36,7 @@ h1 {
 
 .screen {
     margin-bottom: 30px;
+    width: 100%; /* Garantir que a tela ocupe toda a largura */
 }
 
 input[type="number"], input[type="text"] {
@@ -90,6 +94,7 @@ button#new-game {
     justify-content: space-between;
     margin: 20px 0;
     flex-direction: column; /* Padrão: empilhado verticalmente */
+    width: 100%; /* Garantir que ocupe toda a largura */
 }
 
 .team-cardA, .team-cardB {
