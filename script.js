@@ -86,11 +86,4 @@ function enableButtons() {
 }
 
 // Novo Jogo
-document.getElementById('new-game').addEventListener('click', function() {
-    document.getElementById('team-a-name').value = '';
-    document.getElementById('team-b-name').value = '';
-    document.getElementById('max-score').value = '';
-    document.getElementById('scoreboard').style.display = 'none'; // Oculta a scoreboard
-    document.getElementById('winner-message').style.display = 'none'; // Oculta mensagem de vencedor
-    document.getElementById('initial-screen').style.display = 'block'; // Exibe a tela inicial novamente
-});
+document.getElementById('new-game').addEvent
