@@ -18,6 +18,8 @@ body {
     width: 100%;
     max-width: 450px;
     color: white;
+    display: flex;
+    flex-direction: column; /* Colunas por padrão */
 }
 
 h1 {
@@ -85,26 +87,20 @@ button#new-game {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
+    flex-direction: column; /* Padrão: empilhado verticalmente */
 }
 
-.team-cardA {
+.team-cardA, .team-cardB {
     background: #256b50; /* Verde escuro */
     border-radius: 10px;
     padding: 20px;
-    flex: 1;
     text-align: center;
-    margin: 0 10px;
+    margin: 10px 0; /* Margem vertical */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .team-cardB {
     background: #97521a; /* Laranja escuro */
-    border-radius: 10px;
-    padding: 20px;
-    flex: 1;
-    text-align: center;
-    margin: 0 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
@@ -151,4 +147,21 @@ button#btn-a-decrease,
 button#btn-b-increase,
 button#btn-b-decrease {
     margin-top: 10px; /* Espaço entre os botões */
+}
+
+/* Media Query para telas menores */
+@media (max-width: 600px) {
+    .scoreboard {
+        flex-direction: column; /* Colunas empilhadas em telas pequenas */
+    }
+}
+
+@media (orientation: landscape) {
+    .scoreboard {
+        flex-direction: row; /* Placar lado a lado na horizontal */
+    }
+    .team-cardA, .team-cardB {
+        flex: 1 1 45%; /* Largura mínima na horizontal */
+        margin: 0 10px; /* Margem horizontal */
+    }
 }
