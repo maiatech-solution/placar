@@ -58,4 +58,39 @@ document.getElementById('btn-a-decrease').addEventListener('click', function() {
     updateScores();
 });
 
-document.getElementById('btn-b-increase').add
+document.getElementById('btn-b-increase').addEventListener('click', function() {
+    scoreB++;
+    updateScores();
+});
+
+document.getElementById('btn-b-decrease').addEventListener('click', function() {
+    if (scoreB > 0) scoreB--;
+    updateScores();
+});
+
+// Reiniciar o jogo
+document.getElementById('restart').addEventListener('click', function() {
+    scoreA = 0;
+    scoreB = 0;
+    updateScores();
+    document.getElementById('winner-message').style.display = 'none'; // Oculta mensagem de vencedor
+    enableButtons();
+});
+
+// Habilita os botões após reiniciar o jogo
+function enableButtons() {
+    document.getElementById('btn-a-increase').disabled = false;
+    document.getElementById('btn-a-decrease').disabled = false;
+    document.getElementById('btn-b-increase').disabled = false;
+    document.getElementById('btn-b-decrease').disabled = false;
+}
+
+// Novo Jogo
+document.getElementById('new-game').addEventListener('click', function() {
+    document.getElementById('team-a-name').value = '';
+    document.getElementById('team-b-name').value = '';
+    document.getElementById('max-score').value = '';
+    document.getElementById('scoreboard').style.display = 'none'; // Oculta a scoreboard
+    document.getElementById('winner-message').style.display = 'none'; // Oculta mensagem de vencedor
+    document.getElementById('initial-screen').style.display = 'block'; // Exibe a tela inicial novamente
+});
