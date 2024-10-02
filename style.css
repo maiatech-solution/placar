@@ -17,7 +17,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     padding: 30px;
     width: 100%;
-    max-width: 450px;
+    max-width: 600px; /* Aumenta a largura máxima */
     color: white;
 }
 
@@ -68,7 +68,7 @@ button:hover {
     background: #256b50; /* Verde escuro para Time A */
     border-radius: 10px;
     padding: 20px;
-    flex: 1;
+    flex: 1 1 48%; /* Ajusta a largura dos cards */
     text-align: center;
     margin: 10px; /* Adiciona espaço entre os cards */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -124,4 +124,10 @@ button#restart,
 button#new-game {
     width: 48%; /* Ajusta a largura dos botões */
     margin: 10px 1%; /* Adiciona margem entre os botões */
+}
+
+/* Estilo para os botões + e - */
+button.increment, button.decrement {
+    width: 45%; /* Ajusta a largura dos botões */
+    margin: 0 2.5%; /* Aumenta o espaço entre os botões */
 }
