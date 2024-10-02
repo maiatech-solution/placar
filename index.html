@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placar do Jogo</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Placar de Jogo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div id="initial-screen">
-            <h1>Defina o Jogo</h1>
-            <input type="text" id="team-a-name" placeholder="Nome do Time A">
-            <input type="text" id="team-b-name" placeholder="Nome do Time B">
-            <input type="number" id="max-score" placeholder="Pontos para vencer">
-            <button id="start-game">Iniciar Jogo</button>
-        </div>
+        <h1>Defina o jogo</h1>
+        <input type="number" id="max-points" placeholder="Pontos para vencer" />
+        <input type="text" id="team-a-name" placeholder="Nome do Time A" />
+        <input type="text" id="team-b-name" placeholder="Nome do Time B" />
+        <button id="start-game">Iniciar Jogo</button>
         
-        <div id="scoreboard" style="display: none;">
-            <div class="score-container">
-                <div class="team-cardA">
-                    <h2 id="team-a-display"></h2>
-                    <h3 id="team-a-score">0</h3>
-                    <button id="btn-a-increase">+</button>
-                    <button id="btn-a-decrease">-</button>
-                </div>
-                
-                <div class="team-cardB">
-                    <h2 id="team-b-display"></h2>
-                    <h3 id="team-b-score">0</h3>
-                    <button id="btn-b-increase">+</button>
-                    <button id="btn-b-decrease">-</button>
-                </div>
+        <div class="score-container" style="display:none;"> <!-- Inicialmente oculto -->
+            <div class="team-cardA">
+                <h2 id="team-a-display">Time A</h2>
+                <h3 id="team-a-score">0</h3>
+                <button id="increase-a">+</button>
+                <button id="decrease-a">-</button>
             </div>
-            
+            <div class="team-cardB">
+                <h2 id="team-b-display">Time B</h2>
+                <h3 id="team-b-score">0</h3>
+                <button id="increase-b">+</button>
+                <button id="decrease-b">-</button>
+            </div>
             <div id="winner-message"></div>
             <div class="button-container">
                 <button id="restart">Reiniciar Jogo</button>
                 <button id="new-game">Novo Jogo</button>
             </div>
         </div>
+        
+        <footer>
+            <p>Created by: MaiaTech Solution</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p>Created by: MaiaTech Solution</p>
-    </footer>
     
     <script src="script.js"></script>
 </body>

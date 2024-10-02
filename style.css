@@ -84,7 +84,7 @@ button:hover {
     flex: 1;
     min-width: 200px; /* Largura mínima dos cards */
     text-align: center;
-    margin: 10px 0; /* Espaçamento entre os cards */
+    margin: 10px; /* Espaçamento entre os cards */
 }
 
 .team-cardB {
@@ -119,20 +119,6 @@ h3 {
 
 button#restart, button#new-game {
     width: 48%; /* Cada botão ocupa 48% do espaço */
-}
-
-footer {
-    background-color: #333; /* Cinza escuro */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
-}
-
-footer p {
-    margin: 0; /* Remove margens padrão */
-    font-size: 0.9em; /* Tamanho da fonte */
 }
 
 /* Estilos para quando a tela está na horizontal */
