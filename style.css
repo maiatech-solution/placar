@@ -143,6 +143,8 @@ footer p {
     
     .team-cardA, .team-cardB {
         margin: 0 10px; /* Espaçamento horizontal entre os cards */
+        flex: 1; /* Permite que os cards cresçam igualmente */
+        max-width: 220px; /* Limita a largura dos cards */
     }
     
     .button-container {
