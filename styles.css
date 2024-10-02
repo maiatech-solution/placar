@@ -21,6 +21,7 @@ body {
     color: white;
     flex: 1; /* Faz a container crescer para ocupar espaço */
     overflow-y: auto; /* Permite rolagem se necessário */
+    padding-top: 60px; /* Adiciona espaço no topo */
 }
 
 h1 {
