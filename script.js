@@ -29,8 +29,8 @@ function disableButtons() {
 
 // Event listener para iniciar o jogo
 document.getElementById('start-game').addEventListener('click', function() {
-    const teamAName = document.getElementById('team-a-name').value;
-    const teamBName = document.getElementById('team-b-name').value;
+    const teamAName = document.getElementById('team-a-name').value.trim();
+    const teamBName = document.getElementById('team-b-name').value.trim();
     maxScore = parseInt(document.getElementById('max-score').value);
 
     if (teamAName && teamBName && !isNaN(maxScore)) {
