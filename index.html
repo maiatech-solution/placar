@@ -8,13 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Defina o jogo</h1>
-        <input type="number" id="max-points" placeholder="Pontos para vencer" />
-        <input type="text" id="team-a-name" placeholder="Nome do Time A" />
-        <input type="text" id="team-b-name" placeholder="Nome do Time B" />
+        <h1>Defina o Jogo</h1>
+        <input type="number" id="max-points" placeholder="Pontos máximos" min="1">
+        <input type="text" id="team-a-name" placeholder="Nome do Time A">
+        <input type="text" id="team-b-name" placeholder="Nome do Time B">
         <button id="start-game">Iniciar Jogo</button>
-        
-        <div class="score-container" style="display:none;"> <!-- Inicialmente oculto -->
+    </div>
+
+    <div class="score-container" style="display: none;">
+        <div class="scoreboard">
             <div class="team-cardA">
                 <h2 id="team-a-display">Time A</h2>
                 <h3 id="team-a-score">0</h3>
@@ -27,18 +29,16 @@
                 <button id="increase-b">+</button>
                 <button id="decrease-b">-</button>
             </div>
-            <div id="winner-message"></div>
-            <div class="button-container">
-                <button id="restart">Reiniciar Jogo</button>
-                <button id="new-game">Novo Jogo</button>
-            </div>
         </div>
-        
-        <footer>
-            <p>Created by: MaiaTech Solution</p>
-        </footer>
+        <div id="winner-message"></div>
+        <button id="restart">Reiniciar Jogo</button>
+        <button id="new-game">Novo Jogo</button>
     </div>
-    
+
+    <footer>
+        <p>Created by: MaiaTech Solution</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
