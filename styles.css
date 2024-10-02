@@ -73,6 +73,14 @@ button:hover {
     transform: translateY(-2px);
 }
 
+button#restart {
+    margin-top: 20px; /* Espaço acima do botão "Recomeçar" */
+}
+
+button#new-game {
+    margin-top: 10px; /* Espaço acima do botão "Novo Jogo" */
+}
+
 .scoreboard {
     display: flex;
     justify-content: space-between;
