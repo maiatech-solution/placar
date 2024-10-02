@@ -8,6 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     box-sizing: border-box;
+    flex-direction: column; /* Para empilhar a container e o footer */
 }
 
 .container {
@@ -20,6 +21,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column; /* Colunas por padrão */
+    min-height: 400px; /* Altura mínima para evitar sobreposição */
 }
 
 h1 {
@@ -129,9 +131,7 @@ footer {
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    position: absolute; /* Posiciona o footer na parte inferior */
-    bottom: 0; /* Coloca o footer na parte inferior da janela */
-    left: 0; /* Alinha à esquerda */
+    position: relative; /* Posiciona o footer na parte inferior da janela */
     margin-top: 20px; /* Espaço acima do footer */
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
 }
