@@ -1,116 +1,107 @@
-document.getElementById("start-game").addEventListener("click", function() {
-    const maxPoints = parseInt(document.getElementById("max-points").value);
-    const teamAName = document.getElementById("team-a-name").value;
-    const teamBName = document.getElementById("team-b-name").value;
+// Variáveis Globais de Controle
+let maxPoints = 0;
+let gameActive = false;
+
+// Seleção de Elementos Fixos
+const containerSetup = document.querySelector(".container");
+const containerScore = document.querySelector(".score-container");
+const winnerMessage = document.getElementById("winner-message");
+
+const scoreAElement = document.getElementById("team-a-score");
+const scoreBElement = document.getElementById("team-b-score");
+
+const inputMaxPoints = document.getElementById("max-points");
+const inputTeamA = document.getElementById("team-a-name");
+const inputTeamB = document.getElementById("team-b-name");
+
+// --- EVENTOS INICIAIS ---
+
+document.getElementById("start-game").addEventListener("click", function () {
+    maxPoints = parseInt(inputMaxPoints.value);
+    const teamAName = inputTeamA.value;
+    const teamBName = inputTeamB.value;
 
     if (!maxPoints || !teamAName || !teamBName) {
-        alert("Por favor, preencha todos os campos.");
+        alert("Por favor, preencha todos os campos corretamente.");
         return;
     }
 
-    // Atualiza os nomes dos times
+    // Configura interface
     document.getElementById("team-a-display").innerText = teamAName;
     document.getElementById("team-b-display").innerText = teamBName;
 
-    // Oculta a tela inicial e mostra a tela de placar
-    document.querySelector(".container").style.display = "none"; // Esconde a tela inicial
-    document.querySelector(".score-container").style.display = "flex"; // Mostra a tela de placar
+    containerSetup.style.display = "none";
+    containerScore.style.display = "flex";
 
-    // Reseta os pontos
-    document.getElementById("team-a-score").innerText = "0";
-    document.getElementById("team-b-score").innerText = "0";
-    document.getElementById("winner-message").innerText = ""; // Limpa a mensagem de vencedor
-
-    // Adiciona eventos para aumentar e diminuir pontos
-    addScoreEventListeners(maxPoints);
-
-    // Adiciona evento para reiniciar o jogo
-    document.getElementById("restart").addEventListener("click", function() {
-        document.getElementById("team-a-score").innerText = "0";
-        document.getElementById("team-b-score").innerText = "0";
-        document.getElementById("winner-message").innerText = ""; // Limpa a mensagem
-        enableScoreButtons(); // Habilita os botões ao reiniciar
-    });
-
-    // Adiciona evento para novo jogo
-    document.getElementById("new-game").addEventListener("click", function() {
-        // Reseta os campos e esconde a tela de placar
-        document.querySelector(".score-container").style.display = "none"; // Esconde a tela de placar
-        document.querySelector(".container").style.display = "block"; // Mostra a tela inicial novamente
-        document.getElementById("max-points").value = "";
-        document.getElementById("team-a-name").value = "";
-        document.getElementById("team-b-name").value = "";
-        document.getElementById("winner-message").innerText = ""; // Limpa a mensagem
-    });
+    resetGame();
 });
 
-function addScoreEventListeners(maxPoints) {
-    const increaseA = document.getElementById("increase-a");
-    const decreaseA = document.getElementById("decrease-a");
-    const increaseB = document.getElementById("increase-b");
-    const decreaseB = document.getElementById("decrease-b");
+// Eventos de Pontuação (Definidos apenas uma vez no escopo global)
+document.getElementById("increase-a").addEventListener("click", () => updateScore('a', true));
+document.getElementById("decrease-a").addEventListener("click", () => updateScore('a', false));
+document.getElementById("increase-b").addEventListener("click", () => updateScore('b', true));
+document.getElementById("decrease-b").addEventListener("click", () => updateScore('b', false));
 
-    // Remove eventos anteriores para evitar múltiplas chamadas
-    increaseA.removeEventListener("click", increaseA.listener);
-    decreaseA.removeEventListener("click", decreaseA.listener);
-    increaseB.removeEventListener("click", increaseB.listener);
-    decreaseB.removeEventListener("click", decreaseB.listener);
+// Controle de Reinício
+document.getElementById("restart").addEventListener("click", resetGame);
 
-    // Define novos listeners
-    increaseA.listener = function() {
-        updateScore('a', maxPoints);
-    };
-    decreaseA.listener = function() {
-        updateScore('a', maxPoints, false);
-    };
-    increaseB.listener = function() {
-        updateScore('b', maxPoints);
-    };
-    decreaseB.listener = function() {
-        updateScore('b', maxPoints, false);
-    };
+document.getElementById("new-game").addEventListener("click", function () {
+    containerScore.style.display = "none";
+    containerSetup.style.display = "block";
+    // Limpa inputs para um novo jogo do zero
+    inputMaxPoints.value = "";
+    inputTeamA.value = "";
+    inputTeamB.value = "";
+});
 
-    increaseA.addEventListener("click", increaseA.listener);
-    decreaseA.addEventListener("click", decreaseA.listener);
-    increaseB.addEventListener("click", increaseB.listener);
-    decreaseB.addEventListener("click", decreaseB.listener);
-}
+// --- FUNÇÕES DE LÓGICA ---
 
-function updateScore(team, maxPoints, isIncrease = true) {
-    const scoreElement = document.getElementById(`team-${team}-score`);
-    let score = parseInt(scoreElement.innerText);
+function updateScore(team, isIncrease) {
+    if (!gameActive) return;
 
-    if (isIncrease) {
-        score++;
+    let scoreA = parseInt(scoreAElement.innerText);
+    let scoreB = parseInt(scoreBElement.innerText);
+
+    if (team === 'a') {
+        scoreA = isIncrease ? scoreA + 1 : Math.max(0, scoreA - 1);
+        scoreAElement.innerText = scoreA;
     } else {
-        score = Math.max(0, score - 1); // Não permitir pontuação negativa
+        scoreB = isIncrease ? scoreB + 1 : Math.max(0, scoreB - 1);
+        scoreBElement.innerText = scoreB;
     }
 
-    scoreElement.innerText = score;
+    checkWinner(scoreA, scoreB);
+}
 
-    // Verifica se algum time venceu
-    if (score >= maxPoints) {
-        const winningTeamName = document.getElementById(`team-${team}-display`).innerText;
-        document.getElementById("winner-message").innerText = `${winningTeamName} venceu!`;
+function checkWinner(scoreA, scoreB) {
+    const diff = Math.abs(scoreA - scoreB);
+
+    // Regra: Atingir o máximo E ter pelo menos 2 pontos de vantagem
+    if ((scoreA >= maxPoints || scoreB >= maxPoints) && diff >= 2) {
+        gameActive = false;
         
-        // Mostra a mensagem de vencedor
-        document.getElementById("winner-message").style.display = "block";
+        const winningTeam = scoreA > scoreB 
+            ? document.getElementById("team-a-display").innerText 
+            : document.getElementById("team-b-display").innerText;
 
-        // Desabilita os botões de aumentar e diminuir após a vitória
-        disableScoreButtons();
+        winnerMessage.innerText = `🏆 ${winningTeam} venceu!`;
+        winnerMessage.style.display = "block";
+        disableScoreButtons(true);
     }
 }
 
-function disableScoreButtons() {
-    document.getElementById("increase-a").disabled = true;
-    document.getElementById("decrease-a").disabled = true;
-    document.getElementById("increase-b").disabled = true;
-    document.getElementById("decrease-b").disabled = true;
+function resetGame() {
+    scoreAElement.innerText = "0";
+    scoreBElement.innerText = "0";
+    winnerMessage.innerText = "";
+    winnerMessage.style.display = "none";
+    gameActive = true;
+    disableScoreButtons(false);
 }
 
-function enableScoreButtons() {
-    document.getElementById("increase-a").disabled = false;
-    document.getElementById("decrease-a").disabled = false;
-    document.getElementById("increase-b").disabled = false;
-    document.getElementById("decrease-b").disabled = false;
+function disableScoreButtons(status) {
+    document.getElementById("increase-a").disabled = status;
+    document.getElementById("decrease-a").disabled = status;
+    document.getElementById("increase-b").disabled = status;
+    document.getElementById("decrease-b").disabled = status;
 }
